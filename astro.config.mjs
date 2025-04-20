@@ -8,8 +8,25 @@ import node from '@astrojs/node';
 // https://astro.build/config
 export default defineConfig({
   integrations: [svelte()],
-
+  server: {
+    port: 8080,
+    host: true,
+  },
   adapter: node({
     mode: 'middleware'
-  })
+  }),
+  session: {
+    driver: 'redis',
+    options: {
+      url: process.env.REDIS_URL,
+    },
+    ttl: 3600, // 1 hour
+    cookie: {
+      name: 'manago_session',
+      path: '/',
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      maxAge: 60 * 60 * 24 * 7,
+    },
+  },
 });

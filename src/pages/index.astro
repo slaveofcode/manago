@@ -1,4 +1,20 @@
 ---
+export const prerender = false;
+const cart = await Astro.session?.get('cart');
+console.log(cart);
+
+const initcart = {
+	items: []
+};
+if (!cart) {
+	await Astro.session?.set('cart', initcart);
+} else {
+	initcart.items = cart.items;
+	Astro.session.set('cart', {
+	items: [...initcart.items, { id: initcart.items.length + 1, name: 'test' }]
+});
+}
+
 
 ---
 
