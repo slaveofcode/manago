@@ -5,16 +5,21 @@ import svelte from '@astrojs/svelte';
 
 import node from '@astrojs/node';
 
+import tailwindcss from '@tailwindcss/vite';
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [svelte()],
+
   server: {
     port: 8080,
     host: true,
   },
+
   adapter: node({
     mode: 'middleware'
   }),
+
   session: {
     driver: 'redis',
     options: {
@@ -29,4 +34,9 @@ export default defineConfig({
       maxAge: 60 * 60 * 24 * 7,
     },
   },
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
+
 });

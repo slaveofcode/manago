@@ -1,21 +1,5 @@
 ---
-export const prerender = false;
-const cart = await Astro.session?.get('cart');
-console.log(cart);
-
-const initcart = {
-	items: []
-};
-if (!cart) {
-	await Astro.session?.set('cart', initcart);
-} else {
-	initcart.items = cart.items;
-	Astro.session.set('cart', {
-	items: [...initcart.items, { id: initcart.items.length + 1, name: 'test' }]
-});
-}
-
-
+import "@/styles/global.css";
 ---
 
 <html lang="en">
@@ -27,6 +11,8 @@ if (!cart) {
 		<title>Astro</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<h1 class="text-3xl font-bold underline">
+			Hello world!
+		  </h1>
 	</body>
 </html>
