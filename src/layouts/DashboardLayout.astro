@@ -2,7 +2,6 @@
 import "@/styles/global.css";
 import Navbar from "@/components/Navbar.svelte";
 import Sidebar from "@/components/Sidebar.svelte";
-import LogoutButton from "@/components/LogoutButton.astro";
 
 interface Props {
   title: string;
@@ -15,6 +14,8 @@ export const prerender = false;
 if (!Astro.locals.user) {
   return Astro.redirect('/login');
 }
+
+const user = Astro.locals.user;
 ---
 
 <!doctype html>
@@ -35,14 +36,7 @@ if (!Astro.locals.user) {
       <!-- Main content -->
       <div class="flex flex-col flex-1 overflow-hidden">
         <!-- Navbar component -->
-        <Navbar title={title}>
-          <div class="flex items-center">
-            <span class="text-sm text-muted-foreground mr-4">
-              {Astro.locals.user?.name || 'User'}
-            </span>
-            <LogoutButton />
-          </div>
-        </Navbar>
+        <Navbar title={title} isAuthenticated={true} client:load />
 
         <!-- Page content -->
         <main class="flex-1 overflow-auto p-6">

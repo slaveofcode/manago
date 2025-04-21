@@ -1,8 +1,10 @@
 <script>
   import { Button } from "@/components/ui/button";
   import { theme, toggleTheme } from "@/lib/stores/theme.js";
+  import LogoutButton from "@/components/LogoutButton.svelte";
   
   export let isAuthenticated = false;
+  export let title = "";
 </script>
 
 <header class="fixed top-0 left-0 right-0 z-50 border-b bg-[hsl(var(--background))] shadow-sm">
@@ -12,6 +14,10 @@
         <span class="font-bold text-xl">Manago</span>
       </a>
     </div>
+    
+    {#if title}
+      <h1 class="text-lg font-medium">{title}</h1>
+    {/if}
     
     <nav class="hidden md:flex items-center space-x-6">
       <a href="/" class="text-sm font-medium transition-colors hover:text-primary">
@@ -57,7 +63,7 @@
         <a href="/dashboard">
           <Button variant="ghost" class="rounded-none">Dashboard</Button>
         </a>
-        <Button variant="outline" class="rounded-none">Logout</Button>
+        <LogoutButton />
       {:else}
         <a href="/login">
           <Button variant="ghost" class="rounded-none">Login</Button>
