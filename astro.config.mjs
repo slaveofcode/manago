@@ -16,6 +16,8 @@ export default defineConfig({
     host: true,
   },
 
+  output: 'server', // Change this to server
+
   adapter: node({
     mode: 'middleware'
   }),

@@ -1,5 +1,13 @@
 ---
 import DashboardLayout from "@/layouts/DashboardLayout.astro";
+
+// Mark this page as server-rendered (not prerendered/static)
+export const prerender = false;
+
+// Redirect if user is not logged in
+if (!Astro.locals.user) {
+  return Astro.redirect('/login');
+}
 ---
 
 <DashboardLayout title="Overview">

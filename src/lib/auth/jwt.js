@@ -1,37 +1,35 @@
 import jwt from 'jsonwebtoken';
 
-// Secret key for JWT signing - in production, use environment variables
-const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
-
-// Token expiration time (e.g., 7 days)
-const EXPIRES_IN = '7d';
+// Use a secure secret key (ideally from environment variables)
+const JWT_SECRET = import.meta.env.JWT_SECRET || 'your-secret-key';
 
 /**
  * Generate a JWT token for a user
- * @param {Object} user - User data to encode in the token
+ * @param {Object} user - User object
  * @returns {string} JWT token
  */
 export function generateToken(user) {
-  // Don't include sensitive information like password in the token
+  // Create a payload with user info (don't include sensitive data like password)
   const payload = {
     id: user.id,
     email: user.email,
-    name: user.name
+    name: user.name,
   };
   
-  return jwt.sign(payload, JWT_SECRET, { expiresIn: EXPIRES_IN });
+  // Sign the token with a secret key and set expiration
+  return jwt.sign(payload, JWT_SECRET, { expiresIn: '7d' });
 }
 
 /**
- * Verify and decode a JWT token
+ * Verify a JWT token
  * @param {string} token - JWT token to verify
- * @returns {Object|null} Decoded user data or null if invalid
+ * @returns {Object|null} User payload or null if invalid
  */
-export function verifyToken(token) {
+export async function verifyToken(token) {
   try {
     return jwt.verify(token, JWT_SECRET);
   } catch (error) {
-    console.error('Token verification failed:', error.message);
+    console.error('Token verification error:', error);
     return null;
   }
 }
