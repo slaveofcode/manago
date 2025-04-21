@@ -1,60 +1,25 @@
 import bcrypt from 'bcryptjs';
 import { v4 as uuidv4 } from 'uuid';
-import fs from 'fs/promises';
-import path from 'path';
+import prisma from '../prisma.js';
 
-// In a real app, you'd use a proper database
-// This is a simple file-based storage for demonstration
-const USERS_FILE = path.join(process.cwd(), 'data', 'users.json');
-
-// Ensure the data directory exists
-async function ensureDataDir() {
-  const dataDir = path.join(process.cwd(), 'data');
-  try {
-    await fs.mkdir(dataDir, { recursive: true });
-  } catch (error) {
-    if (error.code !== 'EEXIST') {
-      throw error;
-    }
-  }
-}
-
-// Load users from file
-async function loadUsers() {
-  await ensureDataDir();
-  try {
-    const data = await fs.readFile(USERS_FILE, 'utf8');
-    return JSON.parse(data);
-  } catch (error) {
-    if (error.code === 'ENOENT') {
-      // File doesn't exist yet, return empty array
-      return [];
-    }
-    throw error;
-  }
-}
-
-// Save users to file
-async function saveUsers(users) {
-  await ensureDataDir();
-  await fs.writeFile(USERS_FILE, JSON.stringify(users, null, 2));
-}
+// No longer need file-based storage functions
 
 export async function findUserByEmail(email) {
-  const users = await loadUsers();
-  return users.find(user => user.email === email) || null;
+  return await prisma.user.findUnique({
+    where: { email }
+  });
 }
 
 export async function findUserById(id) {
-  const users = await loadUsers();
-  return users.find(user => user.id === id) || null;
+  return await prisma.user.findUnique({
+    where: { id }
+  });
 }
 
 export async function createUser(userData) {
-  const users = await loadUsers();
-  
   // Check if user already exists
-  if (users.some(user => user.email === userData.email)) {
+  const existingUser = await findUserByEmail(userData.email);
+  if (existingUser) {
     throw new Error('User with this email already exists');
   }
   
@@ -62,18 +27,14 @@ export async function createUser(userData) {
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(userData.password, salt);
   
-  // Create new user
-  const newUser = {
-    id: uuidv4(),
-    email: userData.email,
-    name: userData.name,
-    password: hashedPassword,
-    createdAt: new Date().toISOString()
-  };
-  
-  // Add to users array and save
-  users.push(newUser);
-  await saveUsers(users);
+  // Create new user in database
+  const newUser = await prisma.user.create({
+    data: {
+      email: userData.email,
+      name: userData.name,
+      password: hashedPassword
+    }
+  });
   
   // Return user without password
   const { password, ...userWithoutPassword } = newUser;
