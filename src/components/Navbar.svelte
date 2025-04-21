@@ -4,7 +4,7 @@
   export let isAuthenticated = false;
 </script>
 
-<header class="fixed top-0 left-0 right-0 z-50 border-b bg-background">
+<header class="fixed top-0 left-0 right-0 z-50 border-b bg-[hsl(var(--background))] shadow-sm">
   <div class="container flex h-14 items-center px-4">
     <div class="mr-auto">
       <a href="/" class="flex items-center">
