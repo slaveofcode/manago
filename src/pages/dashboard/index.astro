@@ -1,7 +1,122 @@
 ---
-import DashboardLayout from '@/layouts/DashboardLayout.astro';
+import DashboardLayout from "@/layouts/DashboardLayout.astro";
 ---
+
 <DashboardLayout title="Overview">
-    <h1>Dashboard Overview</h1>
-    <p>Welcome to your dashboard!</p>
+  <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+    <div class="rounded-lg border bg-card p-4 text-card-foreground shadow-sm">
+      <div class="flex flex-row items-center justify-between space-y-0 pb-2">
+        <h3 class="text-sm font-medium">Total Projects</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+        </svg>
+      </div>
+      <div class="text-2xl font-bold">12</div>
+      <p class="text-xs text-muted-foreground">+2 from last month</p>
+    </div>
+    
+    <div class="rounded-lg border bg-card p-4 text-card-foreground shadow-sm">
+      <div class="flex flex-row items-center justify-between space-y-0 pb-2">
+        <h3 class="text-sm font-medium">Active Tasks</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 11l3 3L22 4"></path>
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+        </svg>
+      </div>
+      <div class="text-2xl font-bold">24</div>
+      <p class="text-xs text-muted-foreground">8 due this week</p>
+    </div>
+    
+    <div class="rounded-lg border bg-card p-4 text-card-foreground shadow-sm">
+      <div class="flex flex-row items-center justify-between space-y-0 pb-2">
+        <h3 class="text-sm font-medium">Team Members</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+          <circle cx="9" cy="7" r="4"></circle>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+        </svg>
+      </div>
+      <div class="text-2xl font-bold">8</div>
+      <p class="text-xs text-muted-foreground">2 new this month</p>
+    </div>
+    
+    <div class="rounded-lg border bg-card p-4 text-card-foreground shadow-sm">
+      <div class="flex flex-row items-center justify-between space-y-0 pb-2">
+        <h3 class="text-sm font-medium">Completion Rate</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+        </svg>
+      </div>
+      <div class="text-2xl font-bold">86%</div>
+      <p class="text-xs text-muted-foreground">+2% from last month</p>
+    </div>
+  </div>
+  
+  <div class="mt-6 grid gap-6 md:grid-cols-2">
+    <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+      <div class="p-6">
+        <h3 class="text-lg font-medium">Recent Projects</h3>
+        <div class="mt-4 space-y-2">
+          <div class="flex items-center justify-between rounded-md p-2 hover:bg-muted">
+            <div>
+              <p class="font-medium">Website Redesign</p>
+              <p class="text-sm text-muted-foreground">Due in 2 weeks</p>
+            </div>
+            <span class="rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-800">On Track</span>
+          </div>
+          <div class="flex items-center justify-between rounded-md p-2 hover:bg-muted">
+            <div>
+              <p class="font-medium">Mobile App Development</p>
+              <p class="text-sm text-muted-foreground">Due in 1 month</p>
+            </div>
+            <span class="rounded-full bg-yellow-100 px-2 py-1 text-xs font-medium text-yellow-800">In Progress</span>
+          </div>
+          <div class="flex items-center justify-between rounded-md p-2 hover:bg-muted">
+            <div>
+              <p class="font-medium">Marketing Campaign</p>
+              <p class="text-sm text-muted-foreground">Due in 3 days</p>
+            </div>
+            <span class="rounded-full bg-red-100 px-2 py-1 text-xs font-medium text-red-800">Urgent</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+      <div class="p-6">
+        <h3 class="text-lg font-medium">Upcoming Tasks</h3>
+        <div class="mt-4 space-y-2">
+          <div class="flex items-center rounded-md p-2 hover:bg-muted">
+            <input type="checkbox" class="mr-2 h-4 w-4" />
+            <div>
+              <p class="font-medium">Finalize design mockups</p>
+              <p class="text-sm text-muted-foreground">Due tomorrow</p>
+            </div>
+          </div>
+          <div class="flex items-center rounded-md p-2 hover:bg-muted">
+            <input type="checkbox" class="mr-2 h-4 w-4" />
+            <div>
+              <p class="font-medium">Client meeting</p>
+              <p class="text-sm text-muted-foreground">Thursday, 2:00 PM</p>
+            </div>
+          </div>
+          <div class="flex items-center rounded-md p-2 hover:bg-muted">
+            <input type="checkbox" class="mr-2 h-4 w-4" />
+            <div>
+              <p class="font-medium">Review project timeline</p>
+              <p class="text-sm text-muted-foreground">Friday, 10:00 AM</p>
+            </div>
+          </div>
+          <div class="flex items-center rounded-md p-2 hover:bg-muted">
+            <input type="checkbox" class="mr-2 h-4 w-4" />
+            <div>
+              <p class="font-medium">Submit progress report</p>
+              <p class="text-sm text-muted-foreground">Next Monday</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </DashboardLayout>

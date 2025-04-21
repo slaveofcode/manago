@@ -1,11 +1,85 @@
 ---
-import LandingLayout from "@/layouts/LandingLayout.astro"; // Import the new layout
-import Button from "@/components/ui/button/button.svelte";
+import LandingLayout from "@/layouts/LandingLayout.astro";
+import { Button } from "@/components/ui/button";
 ---
 
-<LandingLayout title="Welcome to Manago"> {/* Use the layout and pass the title */}
-	<h1 class="text-3xl font-bold underline">
-	Hello world!
-	</h1>
-	<Button>Something</Button>
+<LandingLayout title="Project Management Made Simple">
+  <section class="py-20">
+    <div class="container px-4 md:px-6">
+      <div class="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:grid-cols-2">
+        <div class="flex flex-col justify-center space-y-4">
+          <div class="space-y-2">
+            <h1 class="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+              Project Management Made Simple
+            </h1>
+            <p class="max-w-[600px] text-muted-foreground md:text-xl">
+              Streamline your workflow, collaborate with your team, and deliver projects on time with Manago.
+            </p>
+          </div>
+          <div class="flex flex-col gap-2 min-[400px]:flex-row">
+            <Button size="lg">Get Started</Button>
+            <Button size="lg" variant="outline">Learn More</Button>
+          </div>
+        </div>
+        <div class="flex items-center justify-center">
+          <img
+            src="https://via.placeholder.com/550x400?text=Dashboard+Preview"
+            width="550"
+            height="400"
+            alt="Dashboard Preview"
+            class="rounded-lg object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="bg-muted py-20">
+    <div class="container px-4 md:px-6">
+      <div class="flex flex-col items-center justify-center space-y-4 text-center">
+        <div class="space-y-2">
+          <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Features</h2>
+          <p class="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            Everything you need to manage your projects effectively
+          </p>
+        </div>
+      </div>
+      <div class="mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 md:grid-cols-3">
+        <div class="flex flex-col items-center space-y-2 rounded-lg border p-6">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          <h3 class="text-xl font-bold">Task Management</h3>
+          <p class="text-center text-muted-foreground">
+            Create, assign, and track tasks with ease
+          </p>
+        </div>
+        <div class="flex flex-col items-center space-y-2 rounded-lg border p-6">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+          <h3 class="text-xl font-bold">Team Collaboration</h3>
+          <p class="text-center text-muted-foreground">
+            Work together seamlessly with your team
+          </p>
+        </div>
+        <div class="flex flex-col items-center space-y-2 rounded-lg border p-6">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          <h3 class="text-xl font-bold">Project Timeline</h3>
+          <p class="text-center text-muted-foreground">
+            Visualize project progress and deadlines
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 </LandingLayout>
