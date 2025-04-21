@@ -12,9 +12,11 @@ export default defineConfig({
   integrations: [svelte()],
 
   server: {
-    port: 8080,
+    port: Number(import.meta.env.SERVER_PORT || 8080),
     host: true,
   },
+
+  output: 'server', // Change this to server
 
   adapter: node({
     mode: 'middleware'
