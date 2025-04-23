@@ -15,10 +15,6 @@
       </a>
     </div>
     
-    {#if title}
-      <h1 class="text-lg font-medium">{title}</h1>
-    {/if}
-    
     <nav class="hidden md:flex items-center space-x-6">
       <a href="/" class="text-sm font-medium transition-colors hover:text-primary">
         Home
