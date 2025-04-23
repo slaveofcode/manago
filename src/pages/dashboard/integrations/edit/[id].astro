@@ -1,0 +1,61 @@
+---
+import DashboardLayout from "@/layouts/DashboardLayout.astro";
+import SlackIntegration from "@/components/integrations/SlackIntegration.svelte";
+
+// Mark this page as server-rendered (not prerendered/static)
+export const prerender = false;
+
+// Redirect if user is not logged in
+if (!Astro.locals.user) {
+  return Astro.redirect('/login');
+}
+
+// Get the integration ID from the URL
+const { id } = Astro.params;
+
+// Import integration model
+const { getIntegrationById } = await import('../../../../lib/models/integration.js');
+
+// Get the integration
+const integration = await getIntegrationById(id);
+
+// Check if integration exists and belongs to the current user
+if (!integration || integration.userId !== Astro.locals.user.id) {
+  return Astro.redirect('/dashboard/integrations');
+}
+---
+
+<DashboardLayout title="Edit Integration">
+  <div class="space-y-6">
+    <div class="flex items-center justify-between">
+      <h1 class="text-2xl font-bold tracking-tight">Edit Integration</h1>
+      <a 
+        href="/dashboard/integrations" 
+        class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+      >
+        Back to Integrations
+      </a>
+    </div>
+    
+    <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+      <div class="p-6">
+        {integration.type === 'slack' ? (
+          <div>
+            <h2 class="text-lg font-medium mb-4">Edit Slack Integration</h2>
+            <SlackIntegration client:load integration={integration} />
+          </div>
+        ) : (
+          <div class="text-center py-8">
+            <p class="text-muted-foreground">This integration type is not supported for editing.</p>
+            <a 
+              href="/dashboard/integrations" 
+              class="mt-4 inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+            >
+              Back to Integrations
+            </a>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</DashboardLayout>
