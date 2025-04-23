@@ -54,6 +54,54 @@ const integrationType = Astro.url.searchParams.get('type') || 'slack';
           <div class="flex flex-col items-center p-4 border rounded-md border-input opacity-50 cursor-not-allowed">
             <div class="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-2">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21.5 4.5 2.5 12.5 9.5 13.5 17.5 8.5 10.5 15.5 17.5 19.5 21.5 4.5"></path>
+                <path d="M9.5 13.5 9.5 19.5 12.5 16.5"></path>
+              </svg>
+            </div>
+            <div class="font-medium">Telegram</div>
+            <div class="text-xs text-muted-foreground text-center">Send notifications to Telegram channels (Coming Soon)</div>
+          </div>
+          
+          <div class="flex flex-col items-center p-4 border rounded-md border-input opacity-50 cursor-not-allowed">
+            <div class="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9H4.5a2.5 2.5 0 0 0 0 5H6"></path>
+                <path d="M18 9h1.5a2.5 2.5 0 0 1 0 5H18"></path>
+                <path d="M4 22h16"></path>
+                <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+                <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+                <path d="M12 2v8"></path>
+                <path d="M4.2 10.2 12 14l7.8-3.8a4 4 0 0 0 0-6.4l-7.8-3.8-7.8 3.8a4 4 0 0 0 0 6.4Z"></path>
+              </svg>
+            </div>
+            <div class="font-medium">Rocket.Chat</div>
+            <div class="text-xs text-muted-foreground text-center">Send notifications to Rocket.Chat channels (Coming Soon)</div>
+          </div>
+          
+          <div class="flex flex-col items-center p-4 border rounded-md border-input opacity-50 cursor-not-allowed">
+            <div class="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+            </div>
+            <div class="font-medium">Email</div>
+            <div class="text-xs text-muted-foreground text-center">Send email notifications (Coming Soon)</div>
+          </div>
+          
+          <div class="flex flex-col items-center p-4 border rounded-md border-input opacity-50 cursor-not-allowed">
+            <div class="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+              </svg>
+            </div>
+            <div class="font-medium">X (Twitter)</div>
+            <div class="text-xs text-muted-foreground text-center">Post updates to X/Twitter (Coming Soon)</div>
+          </div>
+          
+          <div class="flex flex-col items-center p-4 border rounded-md border-input opacity-50 cursor-not-allowed">
+            <div class="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
               </svg>
             </div>

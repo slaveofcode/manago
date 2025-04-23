@@ -18,6 +18,8 @@
   // Available integration types
   const integrationTypes = [
     { id: 'slack', name: 'Slack', description: 'Send notifications to Slack channels', icon: 'slack' },
+    { id: 'telegram', name: 'Telegram', description: 'Send notifications to Telegram channels (Coming Soon)', icon: 'telegram', disabled: true },
+    { id: 'twitter', name: 'X (Twitter)', description: 'Post updates to X/Twitter (Coming Soon)', icon: 'twitter', disabled: true },
     { id: 'github', name: 'GitHub', description: 'Connect with GitHub repositories (Coming Soon)', icon: 'github', disabled: true },
     { id: 'gitlab', name: 'GitLab', description: 'Connect with GitLab repositories (Coming Soon)', icon: 'gitlab', disabled: true },
     { id: 'google', name: 'Google', description: 'Enable Google SSO login (Coming Soon)', icon: 'google', disabled: true }
@@ -219,6 +221,15 @@
                         <path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"></path>
                         <path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"></path>
                         <path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"></path>
+                      </svg>
+                    {:else if type.id === 'telegram'}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21.5 4.5 2.5 12.5 9.5 13.5 17.5 8.5 10.5 15.5 17.5 19.5 21.5 4.5"></path>
+                        <path d="M9.5 13.5 9.5 19.5 12.5 16.5"></path>
+                      </svg>
+                    {:else if type.id === 'twitter'}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
                       </svg>
                     {:else if type.id === 'github'}
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
